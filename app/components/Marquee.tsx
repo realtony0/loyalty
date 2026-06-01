@@ -18,7 +18,7 @@ export default function Marquee() {
           <span
             key={i}
             className={`font-[family-name:var(--font-bebas)] text-sm tracking-[6px] px-8 ${
-              item.accent ? "text-[#c8a96e]/60" : "text-white/15"
+              item.accent ? "text-[#c9a86a]/60" : "text-white/15"
             }`}
           >
             {item.text}

@@ -3,168 +3,165 @@
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 
+const WA = "https://wa.me/221787932731?text=";
+
 const products = [
   {
     img: "/IMG_7791.JPG",
-    name: "T-shirt Crown Logo",
-    type: "Tee · Noir · Oversize",
-    price: "8 000 FCFA",
+    name: "Tee Crown Logo",
+    type: "Noir · Recto / Verso",
+    price: "8 000",
     badge: "Bestseller",
-    badgeColor: "#c8a96e",
-    badgeText: "black",
-    featured: true,
-    waMsg: "Bonjour%2C%20je%20veux%20commander%20le%20T-shirt%20Crown%20Logo%20Noir%20(8000%20FCFA)",
-  },
-  {
-    img: "/IMG_7792.JPG",
-    name: "T-shirt Soldiers",
-    type: "Tee · Blanc · Oversize",
-    price: "8 000 FCFA",
-    badge: null,
-    featured: false,
-    waMsg: "Bonjour%2C%20je%20veux%20commander%20le%20T-shirt%20Soldiers%20Blanc%20(8000%20FCFA)",
-  },
-  {
-    img: "/IMG_7793.JPG",
-    name: "T-shirt Stay Loyal",
-    type: "Tee · Blanc · Oversize",
-    price: "8 000 FCFA",
-    badge: null,
-    featured: false,
-    waMsg: "Bonjour%2C%20je%20veux%20commander%20le%20T-shirt%20Stay%20Loyal%20(8000%20FCFA)",
+    badgeColor: "#c9a86a",
+    badgeText: "#000",
+    msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Crown%20Logo%20Noir%20(8000%20FCFA)",
   },
   {
     img: "/IMG_7794.JPG",
-    name: "T-shirt Crown Logo",
-    type: "Tee · Blanc · Oversize",
-    price: "8 000 FCFA",
+    name: "Tee Crown Logo",
+    type: "Blanc · Recto / Verso",
+    price: "8 000",
     badge: null,
-    featured: false,
-    waMsg: "Bonjour%2C%20je%20veux%20commander%20le%20T-shirt%20Crown%20Logo%20Blanc%20(8000%20FCFA)",
+    msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Crown%20Logo%20Blanc%20(8000%20FCFA)",
   },
   {
-    img: "/IMG_7795.JPG",
-    name: "Du-rags Collection",
-    type: "Accessoire · Multi-couleurs",
-    price: "8 000 FCFA",
-    badge: "New",
-    badgeColor: "#c8a96e",
-    badgeText: "black",
-    featured: false,
-    waMsg: "Bonjour%2C%20je%20veux%20commander%20un%20Du-rag%20Loyalty%20(8000%20FCFA)",
+    img: "/IMG_7793.JPG",
+    name: "Tee Stay Loyal",
+    type: "Blanc · Recto / Verso",
+    price: "8 000",
+    badge: null,
+    msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Stay%20Loyal%20Blanc%20(8000%20FCFA)",
+  },
+  {
+    img: "/IMG_7792.JPG",
+    name: "Tee Soldiers",
+    type: "Blanc · Recto",
+    price: "8 000",
+    badge: null,
+    msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Soldiers%20Blanc%20(8000%20FCFA)",
   },
   {
     img: "/IMG_7798.JPG",
-    name: "T-shirt Pink Script",
-    type: "Tee · Noir · Édition Limitée",
-    price: "10 000 FCFA",
+    name: "Tee Pink Script",
+    type: "Noir · Édition limitée",
+    price: "10 000",
     badge: "Limited",
     badgeColor: "#ff3d91",
-    badgeText: "white",
-    featured: false,
-    waMsg: "Bonjour%2C%20je%20veux%20commander%20le%20T-shirt%20Pink%20Script%20Noir%20(10000%20FCFA)",
+    badgeText: "#fff",
+    msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Pink%20Script%20Noir%20(10000%20FCFA)",
+  },
+  {
+    img: "/IMG_7795.JPG",
+    name: "Du-rags",
+    type: "Multi-couleurs",
+    price: "8 000",
+    badge: "New",
+    badgeColor: "#c9a86a",
+    badgeText: "#000",
+    fit: "cover" as const,
+    msg: "Bonjour%2C%20je%20veux%20commander%20un%20Du-rag%20Loyalty%20(8000%20FCFA)",
   },
 ];
 
 export default function Products() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-
+  const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
-    const observer = new IntersectionObserver(
+    const obs = new IntersectionObserver(
       (entries) => {
         entries.forEach((e, i) => {
           if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add("visible"), i * 80);
-            observer.unobserve(e.target);
+            setTimeout(() => e.target.classList.add("visible"), i * 70);
+            obs.unobserve(e.target);
           }
         });
       },
-      { threshold: 0.1 }
+      { threshold: 0.12 }
     );
-    sectionRef.current
-      ?.querySelectorAll(".fade-up")
-      .forEach((el) => observer.observe(el));
-    return () => observer.disconnect();
+    ref.current?.querySelectorAll(".fade-up").forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
   }, []);
 
   return (
-    <section
-      id="products"
-      ref={sectionRef}
-      className="py-[120px] px-6 md:px-12 max-w-[1400px] mx-auto"
-    >
-      {/* Header */}
-      <div className="text-center mb-16 fade-up">
-        <span className="text-[10px] font-semibold tracking-[4px] uppercase text-[#c8a96e] mb-4 block">
-          Notre Catalogue
-        </span>
-        <h2 className="font-[family-name:var(--font-bebas)] text-[clamp(42px,7vw,72px)] tracking-[4px] leading-none">
-          La{" "}
-          <em className="font-[family-name:var(--font-dm-serif)] not-italic text-[#c8a96e]">
-            Collection
-          </em>
-        </h2>
-        <div className="w-10 h-0.5 bg-[#c8a96e] mx-auto mt-5 rounded" />
-      </div>
-
-      {/* Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-0.5">
-        {products.map((p, i) => (
-          <div
-            key={i}
-            className={`group relative overflow-hidden cursor-pointer bg-[#1a1a1a] fade-up ${
-              p.featured ? "lg:col-span-2" : ""
-            }`}
-            style={{ aspectRatio: p.featured ? "16/10" : "3/4" }}
-          >
-            <Image
-              src={p.img}
-              alt={p.name}
-              fill
-              className="object-cover object-top transition-transform duration-700 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] group-hover:scale-[1.06] brightness-[0.92] group-hover:brightness-100"
-            />
-
-            {/* Badge */}
-            {p.badge && (
-              <div
-                className="absolute top-4 left-4 text-[9px] font-extrabold tracking-[2px] py-1 px-2.5 uppercase rounded-sm z-10"
-                style={{
-                  background: p.badgeColor,
-                  color: p.badgeText === "white" ? "#fff" : "#000",
-                }}
-              >
-                {p.badge}
-              </div>
-            )}
-
-            {/* Overlay */}
-            <div className="absolute inset-0 bg-gradient-to-t from-black/85 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-400" />
-
-            {/* Info */}
-            <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-2 group-hover:translate-y-0 transition-transform duration-400">
-              <div className="text-[15px] font-semibold text-white mb-1 tracking-[0.5px]">
-                {p.name}
-              </div>
-              <div className="text-[11px] text-white/50 tracking-[2px] uppercase mb-3">
-                {p.type}
-              </div>
-              <div className="font-[family-name:var(--font-bebas)] text-2xl tracking-[2px] text-[#c8a96e]">
-                {p.price}
-              </div>
-            </div>
-
-            {/* CTA arrow */}
-            <a
-              href={`https://wa.me/221787932731?text=${p.waMsg}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="absolute bottom-5 right-5 w-10 h-10 rounded-full bg-white text-black flex items-center justify-center text-lg opacity-0 scale-75 group-hover:opacity-100 group-hover:scale-100 transition-all duration-350 hover:bg-[#c8a96e] hover:scale-110 z-10"
-              onClick={(e) => e.stopPropagation()}
-            >
-              →
-            </a>
+    <section id="products" ref={ref} className="py-24 md:py-32 px-6 md:px-12">
+      <div className="max-w-[1400px] mx-auto">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 fade-up">
+          <div>
+            <span className="text-[10px] font-semibold tracking-[4px] uppercase text-[#c9a86a]">
+              La Collection
+            </span>
+            <h2 className="mt-3 font-[family-name:var(--font-bebas)] text-[clamp(48px,8vw,90px)] tracking-[2px] leading-[0.9]">
+              Le Drop
+            </h2>
           </div>
-        ))}
+          <p className="text-white/45 text-sm max-w-xs md:text-right leading-relaxed">
+            6 pièces. Quantités limitées. Chaque commande passe directement par
+            WhatsApp.
+          </p>
+        </div>
+
+        {/* Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
+          {products.map((p, i) => (
+            <div
+              key={i}
+              className="group fade-up flex flex-col bg-gradient-to-b from-[#161616] to-[#0e0e0e] border border-white/[0.07] hover:border-[#c9a86a]/40 transition-colors duration-400 overflow-hidden"
+            >
+              {/* Image */}
+              <div className="relative aspect-[4/5] overflow-hidden bg-[#0d0d0d]">
+                <Image
+                  src={p.img}
+                  alt={p.name}
+                  fill
+                  className={`${
+                    p.fit === "cover"
+                      ? "object-cover"
+                      : "object-contain p-3"
+                  } transition-transform duration-700 ease-out group-hover:scale-105`}
+                />
+                {p.badge && (
+                  <span
+                    className="absolute top-3 left-3 text-[9px] font-extrabold tracking-[2px] py-1 px-2.5 uppercase"
+                    style={{ background: p.badgeColor, color: p.badgeText }}
+                  >
+                    {p.badge}
+                  </span>
+                )}
+              </div>
+
+              {/* Info — always visible */}
+              <div className="flex items-center justify-between gap-3 px-4 py-4 border-t border-white/[0.07]">
+                <div className="min-w-0">
+                  <div className="text-[15px] font-semibold text-white truncate">
+                    {p.name}
+                  </div>
+                  <div className="text-[11px] text-white/45 tracking-[1px] uppercase truncate">
+                    {p.type}
+                  </div>
+                </div>
+                <div className="text-right shrink-0">
+                  <div className="font-[family-name:var(--font-bebas)] text-2xl text-[#e0c389] leading-none">
+                    {p.price}
+                  </div>
+                  <div className="text-[9px] text-white/40 tracking-[1px]">FCFA</div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <a
+                href={`${WA}${p.msg}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 py-3.5 bg-white/5 hover:bg-[#c9a86a] text-white hover:text-black text-[11px] font-bold tracking-[2px] uppercase transition-colors duration-300 border-t border-white/[0.07]"
+              >
+                <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347" />
+                </svg>
+                Commander
+              </a>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );

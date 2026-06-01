@@ -40,7 +40,7 @@ export default function RootLayout({
       lang="fr"
       className={`${bebasNeue.variable} ${inter.variable} ${dmSerif.variable}`}
     >
-      <body className="bg-[#0a0a0a] text-[#f5f5f0] antialiased overflow-x-hidden">
+      <body className="grain bg-[#0a0a0a] text-[#f5f5f0] antialiased overflow-x-hidden">
         {children}
       </body>
     </html>

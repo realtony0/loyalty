@@ -24,14 +24,14 @@ export default function Navbar() {
           >
             ✕
           </button>
-          {["#products", "#lookbook", "#about", "#contact"].map((href, i) => (
+          {["#products", "#lookbook", "#contact"].map((href, i) => (
             <a
               key={i}
               href={href}
               onClick={() => setMenuOpen(false)}
-              className="font-[family-name:var(--font-bebas)] text-5xl tracking-[6px] text-white hover:text-[#c8a96e] transition-colors"
+              className="font-[family-name:var(--font-bebas)] text-5xl tracking-[6px] text-white hover:text-[#c9a86a] transition-colors"
             >
-              {["Collection", "Lookbook", "À Propos", "Contact"][i]}
+              {["Collection", "Lookbook", "Commander"][i]}
             </a>
           ))}
         </div>
@@ -48,7 +48,7 @@ export default function Navbar() {
           href="#hero"
           className="font-[family-name:var(--font-bebas)] text-2xl tracking-[6px] text-white no-underline flex items-center gap-2"
         >
-          LOY<span className="text-[#c8a96e]">A</span>LTY
+          LOY<span className="text-[#c9a86a]">A</span>LTY
         </a>
 
         {/* Desktop links */}
@@ -56,7 +56,6 @@ export default function Navbar() {
           {[
             { href: "#products", label: "Collection" },
             { href: "#lookbook", label: "Lookbook" },
-            { href: "#about", label: "À Propos" },
           ].map((l) => (
             <li key={l.href}>
               <a
@@ -70,7 +69,7 @@ export default function Navbar() {
           <li>
             <a
               href="#contact"
-              className="bg-white text-black text-[11px] font-bold tracking-[1.5px] uppercase py-2.5 px-5 rounded-sm hover:bg-[#c8a96e] transition-all hover:-translate-y-0.5 no-underline"
+              className="bg-white text-black text-[11px] font-bold tracking-[1.5px] uppercase py-2.5 px-5 hover:bg-[#c9a86a] transition-all hover:-translate-y-0.5 no-underline"
             >
               Commander
             </a>
