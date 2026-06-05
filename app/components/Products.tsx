@@ -41,25 +41,15 @@ const products = [
     msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Soldiers%20Blanc%20(8000%20FCFA)",
   },
   {
-    img: "/IMG_7798.JPG",
-    name: "Tee Pink Script",
-    type: "Noir · Édition limitée",
-    price: "10 000",
-    badge: "Limited",
-    badgeColor: "#ff3d91",
-    badgeText: "#fff",
-    msg: "Bonjour%2C%20je%20veux%20commander%20le%20Tee%20Pink%20Script%20Noir%20(10000%20FCFA)",
-  },
-  {
     img: "/IMG_7795.JPG",
     name: "Du-rags",
     type: "Multi-couleurs",
-    price: "8 000",
+    price: "5 000",
     badge: "New",
     badgeColor: "#c9a86a",
     badgeText: "#000",
     fit: "cover" as const,
-    msg: "Bonjour%2C%20je%20veux%20commander%20un%20Du-rag%20Loyalty%20(8000%20FCFA)",
+    msg: "Bonjour%2C%20je%20veux%20commander%20un%20Du-rag%20Loyalty%20(5000%20FCFA)",
   },
 ];
 
@@ -95,7 +85,7 @@ export default function Products() {
             </h2>
           </div>
           <p className="text-white/45 text-sm max-w-xs md:text-right leading-relaxed">
-            6 pièces. Quantités limitées. Chaque commande passe directement par
+            5 pièces. Quantités limitées. Chaque commande passe directement par
             WhatsApp.
           </p>
         </div>
